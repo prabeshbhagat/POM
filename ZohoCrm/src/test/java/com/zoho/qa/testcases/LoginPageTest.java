@@ -46,8 +46,8 @@ public class LoginPageTest extends TestBase {
 	
 	
 	@AfterMethod
-	public void tearDown() throws InterruptedException{
-		Thread.sleep(2000);
+	public void tearDown() {
+		
 		driver.quit();
 	}
 	

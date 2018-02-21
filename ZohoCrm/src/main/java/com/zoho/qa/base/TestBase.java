@@ -22,8 +22,9 @@ public class TestBase {
 		// Read properties
 		prop = new Properties();
 		try {
-			FileInputStream fis = new FileInputStream("/home/justdial/github/JavaNewFiles"
-					+ "/ZohoCrm/src/main/java/com/zoho/qa/config/config.properties");
+			FileInputStream fis = new FileInputStream("/Users/prabesh/Documents/workspace/POM/ZohoCrm/src/"
+					+ "main/java/com/zoho/qa/config/config.properties");
+			
 
 			prop.load(fis);
 		} catch (FileNotFoundException e) {
@@ -40,11 +41,11 @@ public class TestBase {
 		//read property
 		String browserType=prop.getProperty("browser");
 		if(browserType.equals("chrome")){
-			System.setProperty("webdriver.chrome.driver", "/home/justdial/Desktop/Driver/chromedriver");
+			System.setProperty("webdriver.chrome.driver", "/Users/prabesh/Downloads/chromedriver");
 			driver = new ChromeDriver();
 			
 		}else if(browserType.equals("Firefox")){
-			System.setProperty("webdriver.gecko.driver", "/home/justdial/Desktop/Driver/geckodriver");
+			System.setProperty("webdriver.gecko.driver", "/Users/prabesh/Downloads/geckodriver");
 			driver = new FirefoxDriver();
 		}
 		
