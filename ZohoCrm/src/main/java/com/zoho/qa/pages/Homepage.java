@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.zoho.qa.base.TestBase;
+import com.zoho.qa.util.TestUtil;
 
 public class Homepage extends TestBase {
 	
@@ -31,7 +32,7 @@ public class Homepage extends TestBase {
 	
 	
 	public LeadsPage clickOnLeadsLink(){
-		leadsPageLink.click();
+		TestUtil.clickOn(driver, leadsPageLink, TestUtil.Timeouts);
 		return new LeadsPage();
 			
 	}
