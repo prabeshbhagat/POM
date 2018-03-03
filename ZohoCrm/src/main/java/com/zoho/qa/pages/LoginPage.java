@@ -28,6 +28,12 @@ public class LoginPage extends TestBase {
 	@FindBy(xpath="//a[contains(text(),'Sign Up Now')]")
 	WebElement signUpBtn;
 	
+	@FindBy(id="keepme")
+	WebElement KeepMeSignedInCheckBox;
+	
+	@FindBy(xpath="//div[@class='forgotpasslink ' and  text()='Forgot Password?']")
+	WebElement forgotPassLink;
+	
 	// to intilize above elements/OR  we use  constructor
 	//How to intize page factory --(By using PageFactory method)
 	//this means current class variables
@@ -38,14 +44,30 @@ public class LoginPage extends TestBase {
 		PageFactory.initElements(driver, this);
 	}
 	
+	public boolean validateZohoImage(){
+		return zohoLogo.isDisplayed();
+	}
+	
 	//Actions:
 	public String verifyLoginPageTitle(){
 		return driver.getTitle();
 	}
 	
-	public boolean validateZohoImage(){
-		return zohoLogo.isDisplayed();
+	public SignUpPage signUpLink(){
+		signUpBtn.click();
+		return new SignUpPage();
 	}
+	
+	public FgtPwdPage verifyFgtPwd(){
+		forgotPassLink.click();
+		return new FgtPwdPage();
+	}
+	
+	public void verifyKeepMeSignedInCheckBox(){
+		KeepMeSignedInCheckBox.click();
+	}
+	
+	
 	
 	public Homepage login(String un,String pwd){
 		username.sendKeys(un);
@@ -54,6 +76,8 @@ public class LoginPage extends TestBase {
 		
 		return new Homepage();
 	}
+	
+
 
 	
 

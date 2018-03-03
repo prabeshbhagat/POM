@@ -6,8 +6,12 @@
       <class name="com.zoho.qa.testcases.LeadsPageTest">
         <methods>
           <include name="setUp"/>
-          <include name="tearDown"/>
-          <include name="selectLeadNameTest"/>
+          <include name="verifyEditDataTest"/>
+          <include name="verifyEditDataTest1"/>
+          <include name="selectMultipleLeadNameTest"/>
+          <include name="selectSingleLeadNameTest"/>
+          <include name="validateCreateNewLeadTest"/>
+          <include name="verifyCheckAllCheckBoxTest"/>
         </methods>
       </class> <!-- com.zoho.qa.testcases.LeadsPageTest -->
     </classes>

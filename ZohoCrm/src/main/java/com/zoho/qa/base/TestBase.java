@@ -10,22 +10,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.zoho.qa.util.TestUtil;
+import com.zoho.qa.util.WebEventListener;
 
 public class TestBase {
 
 	public static WebDriver driver;
 	public static Properties prop;
 	public static ChromeOptions options;
+	public static EventFiringWebDriver e_driver;
+	public static WebEventListener eventListener;
 
 	public TestBase() {
 
 		// Read properties
 		prop = new Properties();
 		try {
-			FileInputStream fis = new FileInputStream("/home/justdial/github/POM/ZohoCrm/src"
-					+ "/main/java/com/zoho/qa/config/config.properties");
+			FileInputStream fis = new FileInputStream("/Users/prabesh/Documents/workspace/POM"
+					+ "/ZohoCrm/src/main/java/com/zoho/qa/config/config.properties");
 			
 
 			prop.load(fis);
@@ -43,31 +47,33 @@ public class TestBase {
 		//read property
 		String browserType=prop.getProperty("browser");
 		if(browserType.equals("chrome")){
-			System.setProperty("webdriver.chrome.driver", "/home/justdial/Desktop/Driver/chromedriver");
+			System.setProperty("webdriver.chrome.driver", "/Users/prabesh/Downloads/chromedriver");
 			driver = new ChromeDriver();
 			
 		}else if(browserType.equals("Firefox")){
-			System.setProperty("webdriver.gecko.driver", "/home/justdial/Desktop/Driver/chromedriver");
+			System.setProperty("webdriver.gecko.driver", "/Users/prabesh/Downloads/chromedriver");
 			driver = new FirefoxDriver();
-		}else if(browserType.equals("ChromeOptions")){
-			System.setProperty("webdriver.chrome.driver", "/home/justdial/Desktop/Driver/chromedriver");
+		}else if(browserType.equals("Chrome")){
+			System.setProperty("webdriver.chrome.driver", "/Users/prabesh/Downloads/chromedriver");
 			options = new ChromeOptions();
+			options.addArguments("--disable-notifications");
 			driver = new ChromeDriver(options);
-			options.addArguments("disable-popup-blocking");
+			
 			
 		}
+		
+		e_driver=new EventFiringWebDriver(driver);
+		//Now create an object of Event Listener Handler to register it with EventFiringWebDriver
+		eventListener= new WebEventListener();
+		e_driver.register(eventListener);
+		driver=e_driver;
+		
 		
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.Page_Load_Timeouts, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtil.Implicitly_Wait, TimeUnit.SECONDS);
 		driver.get(prop.getProperty("url"));
-		
-	
-	
-	
-	
-	
 	}
 	
 

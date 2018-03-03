@@ -1,1 +1,20 @@
-login page link?
+1)login page link ?
+2)forgot password link not working
+3)Leadspage>>leads creation>>First Name Mr. drop down How to handle?(As its not select  )
+4)how can we avoid using thread.sleep?
+5)for verifyEditDataTest method while editing how to clear the fields completely or partially 
+e.g-Sriram to Srilaxmi
+
+6)my test case will click on the row based on xpath but how to click on a row where lead name is present
+
+7)there are many findby in leads page is there any alternate way to write find by
+
+8)the way i used data provider in my framework is correct?
+
+9)sometimes the script executes infinite times why?
+
+
+
+
+
+
